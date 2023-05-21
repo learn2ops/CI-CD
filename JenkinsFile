@@ -1,0 +1,27 @@
+pipeline {
+   agent any
+    stages {
+        stage('build image') {
+            steps {
+                script{
+                      sh "docker build -t nginx-image ."
+                }
+            }
+        }
+        stage('run docker container') {
+            steps {
+                script{
+                    sh "docker run -d -p 80:80 nginx-image"
+                    }
+                }
+            }
+        }
+    post
+    {
+        always
+        {
+            sh "docker rmi nginx-image | true"
+        }
+    }
+}
+
