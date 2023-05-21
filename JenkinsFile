@@ -4,7 +4,6 @@ pipeline {
         stage('build image') {
             steps {
                 script{
-                      sh "whoami"
                       sh "docker build -t nginx-image ."
                 }
             }
