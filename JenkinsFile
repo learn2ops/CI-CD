@@ -20,7 +20,7 @@ pipeline {
     {
         always
         {
-            sh "docker rmi nginx-image | true"
+            sh "sudo docker rmi nginx-image | true"
         }
     }
 }
