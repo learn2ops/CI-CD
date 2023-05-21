@@ -4,14 +4,15 @@ pipeline {
         stage('build image') {
             steps {
                 script{
-                      sh "sudo docker build -t nginx-image ."
+                      sh "whoami"
+                      sh "docker build -t nginx-image ."
                 }
             }
         }
         stage('run docker container') {
             steps {
                 script{
-                    sh "sudo docker run -d -p 80:80 nginx-image"
+                    sh "docker run -d -p 80:80 nginx-image"
                     }
                 }
             }
@@ -20,7 +21,7 @@ pipeline {
     {
         always
         {
-            sh "sudo docker rmi nginx-image | true"
+            sh "docker rmi nginx-image | true"
         }
     }
 }
