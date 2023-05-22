@@ -16,5 +16,12 @@ pipeline {
                 }
             }
         }
+    post
+    {
+        always
+        {
+            sh "docker rmi nginx-image | true"
+        }
+    }
 }
 
