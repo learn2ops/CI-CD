@@ -4,14 +4,14 @@ pipeline {
         stage('build image') {
             steps {
                 script{
-                      sh "docker build -t nginx-image ."
+                      sh "docker build -t nginx-image:1 ."
                 }
             }
         }
         stage('run docker container') {
             steps {
                 script{
-                    sh "docker run -d -p 80:80 nginx-image"
+                    sh "docker run -d -p 80:80 nginx-image:1"
                     }
                 }
             }
